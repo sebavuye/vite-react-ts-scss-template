@@ -1,0 +1,6 @@
+.gitignore
+.idea/
+.prettierignore
+node_modules/
+tsconfig.json
+yarn.lock

@@ -1,0 +1,45 @@
+name: Release
+
+on:
+  push:
+    tags:
+      - 'v*'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [ 18.x ]
+
+    # Steps represent a sequence of tasks that will be executed as part of the job
+    steps:
+      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+      - name: Checkout ${{ github.event.repository.name }} repository
+        uses: actions/checkout@v3
+      # Install Node, so we can build the project
+      - name: Install Node ${{ matrix.node-version }}
+        uses: actions/setup-node@v3
+        with:
+          node-version: ${{ matrix.node-version }}
+          # Cache installed project dependencies
+          cache: 'yarn'
+      - name: Install project dependencies
+        run: yarn
+      - name: Run typechecking
+        run: yarn tsc --noEmit --pretty
+      - name: Run linting
+        run: yarn eslint --ext js,jsx,ts,tsx src
+      - name: Run tests
+        run: yarn test
+      - name: Build app
+        run: yarn build
+
+#  release:
+#    runs-on: ubuntu-latest
+#    needs: [ build ]
+#    steps:
+#      - name: Checkout ${{ github.event.repository.name }} repository
+#        uses: actions/checkout@v3
+#      - name: Trigger Netlify build
+#        run: curl -X POST -d {} https://api.netlify.com/build_hooks/${{ secrets.NETLIFY_RELEASE_BUILD_HOOK_ID }}

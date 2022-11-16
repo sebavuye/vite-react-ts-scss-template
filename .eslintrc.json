@@ -1,0 +1,143 @@
+{
+  "env": {
+    "browser": true,
+    "es2021": true
+  },
+  "extends": [
+    "eslint:all",
+    "plugin:react/recommended",
+    "plugin:@typescript-eslint/recommended",
+    "plugin:@typescript-eslint/recommended-requiring-type-checking",
+    "plugin:jest-dom/recommended",
+    "plugin:testing-library/react",
+    "plugin:jsx-a11y/strict",
+    "prettier"
+  ],
+  "parser": "@typescript-eslint/parser",
+  "parserOptions": {
+    "ecmaFeatures": {
+      "jsx": true
+    },
+    "project": "./tsconfig.json",
+    "ecmaVersion": "latest",
+    "sourceType": "module"
+  },
+  "plugins": [
+    "react",
+    "@typescript-eslint",
+    "jest-dom",
+    "testing-library",
+    "jsx-a11y",
+    "prettier"
+  ],
+  "overrides": [
+    {
+      "files": [
+        "**/__tests__/**/*.[jt]s?(x)",
+        "**/?(*.)+(spec|test).[jt]s?(x)"
+      ],
+      "extends": ["plugin:testing-library/react"]
+    }
+  ],
+  "rules": {
+    // eslint
+    "one-var": "off",
+
+    // react
+    "react/boolean-prop-naming": "error",
+    "react/react-in-jsx-scope": "off",
+    "react/prop-types": "off",
+    "react/void-dom-elements-no-children": "error",
+    "react/style-prop-object": "error",
+    "react/self-closing-comp": "error",
+    "react/no-multi-comp": "error",
+    "react/no-array-index-key": "error",
+    "react/jsx-wrap-multilines": "error",
+    "react/jsx-props-no-multi-spaces": "error",
+    "react/jsx-pascal-case": "error",
+    "react/jsx-no-useless-fragment": "error",
+    "react/jsx-no-leaked-render": "error",
+    "react/jsx-handler-names": "error",
+    "react/jsx-boolean-value": "error",
+    "react/hook-use-state": "error",
+    "react/button-has-type": "error",
+    "react/destructuring-assignment": "error",
+    "react/jsx-no-constructed-context-values": "error",
+    "react/jsx-sort-props": [
+      "error",
+      {
+        "callbacksLast": true,
+        "shorthandFirst": true,
+        "ignoreCase": false,
+        "noSortAlphabetically": false,
+        "reservedFirst": true
+      }
+    ],
+
+    // prettier
+    "prettier/prettier": ["error"],
+
+    // typescript
+    "@typescript-eslint/array-type": "error",
+    "@typescript-eslint/ban-tslint-comment": "error",
+    "@typescript-eslint/consistent-indexed-object-style": "error",
+    "@typescript-eslint/consistent-type-assertions": "error",
+    "@typescript-eslint/consistent-type-definitions": "error",
+    "@typescript-eslint/consistent-type-exports": "error",
+    "@typescript-eslint/consistent-type-imports": "error",
+    "@typescript-eslint/explicit-function-return-type": "error",
+    "@typescript-eslint/method-signature-style": "error",
+    "@typescript-eslint/no-base-to-string": "error",
+    "@typescript-eslint/no-confusing-non-null-assertion": "error",
+    "@typescript-eslint/no-confusing-void-expression": "error",
+    "@typescript-eslint/no-duplicate-enum-values": "error",
+    "@typescript-eslint/no-dynamic-delete": "error",
+    "@typescript-eslint/no-invalid-void-type": "error",
+    "@typescript-eslint/no-non-null-asserted-nullish-coalescing": "error",
+    "@typescript-eslint/no-redundant-type-constituents": "error",
+    "@typescript-eslint/no-unnecessary-boolean-literal-compare": "error",
+    "@typescript-eslint/no-unnecessary-condition": "error",
+    "@typescript-eslint/no-unnecessary-qualifier": "error",
+    "@typescript-eslint/no-unnecessary-type-arguments": "error",
+    "@typescript-eslint/prefer-enum-initializers": "error",
+    "@typescript-eslint/prefer-includes": "error",
+    "@typescript-eslint/prefer-nullish-coalescing": "error",
+    "@typescript-eslint/prefer-optional-chain": "error",
+    "@typescript-eslint/prefer-reduce-type-parameter": "error",
+    "@typescript-eslint/prefer-ts-expect-error": "error",
+    "@typescript-eslint/promise-function-async": "error",
+    "@typescript-eslint/strict-boolean-expressions": "error",
+    "@typescript-eslint/unified-signatures": "error",
+    "@typescript-eslint/default-param-last": "error",
+    "@typescript-eslint/no-array-constructor": "error",
+    "@typescript-eslint/no-magic-numbers": "error",
+    "@typescript-eslint/no-shadow": "error",
+    "@typescript-eslint/no-throw-literal": "error",
+    "@typescript-eslint/no-unused-expressions": "error",
+    "@typescript-eslint/no-use-before-define": "error",
+    "@typescript-eslint/member-ordering": [
+      "error",
+      { "default": { "order": "alphabetically" } }
+    ],
+
+    // In some cases the core eslint rules don't support TypeScript syntax, so we turn them off as they are extended with typescript-eslint
+    "default-param-last": "off",
+    "no-array-constructor": "off",
+    "no-magic-numbers": "off",
+    "no-shadow": "off",
+    "no-throw-literal": "off",
+    "no-unused-expressions": "off",
+    "no-use-before-define": "off",
+
+    // testing library
+    "testing-library/no-await-sync-events": "error",
+    "testing-library/no-global-regexp-flag-in-query": "error",
+    "testing-library/no-manual-cleanup": "error",
+    "testing-library/consistent-data-testid": [
+      "error",
+      {
+        "testIdPattern": "^test-id(-[A-Z]*)?$"
+      }
+    ]
+  }
+}
