@@ -15,6 +15,6 @@ module.exports = {
   // Lint, format css and scss files
   'src/**/*.(css|scss)': filenames => [
     `yarn prettier --write ${filenames.join(' ')}`,
-    // `yarn stylelint ${filenames.join(' ')}`,
+    `yarn stylelint ${filenames.join(' ')}`,
   ],
 };
