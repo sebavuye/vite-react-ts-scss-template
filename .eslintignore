@@ -1,4 +1,4 @@
 vite.config.ts
-lint-staged.config.js
+lint-staged.config.cjs
 commitlint.config.cjs
 src/vite-env.d.ts
