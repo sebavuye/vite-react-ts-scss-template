@@ -44,11 +44,11 @@ jobs:
       - name: Build app
         run: yarn build
 
-#  deploy:
-#    runs-on: ubuntu-latest
-#    needs: [build]
-#    steps:
-#      - name: Checkout ${{ github.event.repository.name }} repository
-#        uses: actions/checkout@v3
-#      - name: Trigger Netlify build
-#        run: curl -X POST -d {} https://api.netlify.com/build_hooks/${{ secrets.NETLIFY_MAIN_BUILD_HOOK_ID }}
+  deploy:
+    runs-on: ubuntu-latest
+    needs: [build]
+    steps:
+      - name: Checkout ${{ github.event.repository.name }} repository
+        uses: actions/checkout@v3
+      - name: Trigger Netlify build
+        run: curl -X POST -d {} https://api.netlify.com/build_hooks/${{ secrets.NETLIFY_MAIN_BUILD_HOOK_ID }}
