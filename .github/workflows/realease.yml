@@ -15,6 +15,8 @@ jobs:
     steps:
       - name: Checkout ${{ github.event.repository.name }} repository # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
         uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
       - name: Install Node ${{ matrix.node-version }}  # Install Node, so we can build the project
         uses: actions/setup-node@v3
         with:
