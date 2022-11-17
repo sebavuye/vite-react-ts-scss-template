@@ -1,4 +1,6 @@
 # Vite - React - TypeScript - Scss - Template
+![GitHub package.json version](https://img.shields.io/github/package-json/v/sebavuye/vite-react-ts-scss-template?style=flat-square)
+![GitHub last commit](https://img.shields.io/github/last-commit/sebavuye/vite-react-ts-scss-template?style=flat-square)
 
 A starters template including configurations of:
 
@@ -40,3 +42,4 @@ yarn dev
 ```
 
 4. Open [http://localhost:5173/](http://localhost:5173/) with your browser to see the result.
+5. Update or remove the deploy / release workflows for GitHub actions in `.github/workflows` directory before committing.
