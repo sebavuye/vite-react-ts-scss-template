@@ -13,16 +13,13 @@ jobs:
         node-version: [ 18.x ]
 
     steps:
-      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
-      - name: Checkout ${{ github.event.repository.name }} repository
+      - name: Checkout ${{ github.event.repository.name }} repository # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
         uses: actions/checkout@v3
-      # Install Node, so we can build the project
-      - name: Install Node ${{ matrix.node-version }}
+      - name: Install Node ${{ matrix.node-version }}  # Install Node, so we can build the project
         uses: actions/setup-node@v3
         with:
           node-version: ${{ matrix.node-version }}
-          # Cache installed project dependencies
-          cache: 'yarn'
+          cache: 'yarn' # Cache installed project dependencies
       - name: Install project dependencies
         run: yarn
       - name: Run typechecking
@@ -34,11 +31,15 @@ jobs:
       - name: Build app
         run: yarn build
 
-#  release:
-#    runs-on: ubuntu-latest
-#    needs: [ build ]
-#    steps:
-#      - name: Checkout ${{ github.event.repository.name }} repository
-#        uses: actions/checkout@v3
-#      - name: Trigger Netlify build
-#        run: curl -X POST -d {} https://api.netlify.com/build_hooks/${{ secrets.NETLIFY_RELEASE_BUILD_HOOK_ID }}
+  release:
+    runs-on: ubuntu-latest
+    needs: [ build ]
+    steps:
+      - name: Checkout ${{ github.event.repository.name }} repository
+        uses: actions/checkout@v3
+      - name: Trigger Netlify build
+        run: curl -X POST -d {} https://api.netlify.com/build_hooks/${{ secrets.NETLIFY_RELEASE_BUILD_HOOK_ID }}
+      - name: Create release notes
+        run: npx changelogithub
+        env:
+          GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
