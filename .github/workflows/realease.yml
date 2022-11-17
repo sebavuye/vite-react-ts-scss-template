@@ -41,6 +41,8 @@ jobs:
     steps:
       - name: Checkout ${{ github.event.repository.name }} repository
         uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
       - name: Trigger Netlify build
         run: curl -X POST -d {} https://api.netlify.com/build_hooks/${{ secrets.NETLIFY_RELEASE_BUILD_HOOK_ID }}
       - name: Create release notes
