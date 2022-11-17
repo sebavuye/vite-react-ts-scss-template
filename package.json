@@ -1,7 +1,7 @@
 {
   "name": "vite-react-ts-scss-template",
-  "private": true,
-  "version": "0.0.0",
+  "private": false,
+  "version": "0.0.1",
   "type": "module",
   "scripts": {
     "build": "tsc && vite build",
